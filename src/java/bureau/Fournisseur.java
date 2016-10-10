@@ -15,12 +15,12 @@ public class Fournisseur {
 
     int id_four;
     String nom;
-    HashMap <Medicament , Integer > propose;
+    HashMap<Medicament, Integer> propose;
 
     public Fournisseur(int id_four, String nom) {
         this.id_four = id_four;
         this.nom = nom;
-        propose = new HashMap<Medicament,Integer>();
+        propose = new HashMap<Medicament, Integer>();
     }
 
     public void setId_four(int id_four) {
@@ -39,4 +39,12 @@ public class Fournisseur {
         return nom;
     }
 
+    public void ajouterMedicament(Medicament med, int quantite) {
+        if (propose.containsKey(med)) {
+            int res = propose.get(med).intValue() + quantite;
+            propose.replace(med, propose.get(med).intValue(), res);
+        } else {
+            propose.put(med, quantite);
+        }
+    }
 }

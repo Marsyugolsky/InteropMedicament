@@ -20,11 +20,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 public class Crayon implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     @Column
     private String couleur;
 
@@ -35,7 +36,7 @@ public class Crayon implements Serializable {
     public void setCouleur(String couleur) {
         this.couleur = couleur;
     }
-    
+
     
 
     public int getId() {
@@ -69,7 +70,7 @@ public class Crayon implements Serializable {
 public void test23(){
     System.out.println("coucou ca marche");
 }
-    
+
     public void test(){
     }
 
@@ -77,5 +78,5 @@ public void test23(){
     public String toString() {
         return "bureau.Crayon[ id=" + id + " ]";
     }
-    
+
 }

@@ -24,7 +24,7 @@ public class Medicament implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idMed;
+    private int id_med;
 
    
     
@@ -48,11 +48,11 @@ public class Medicament implements Serializable {
     }
     
     public int getIdMed() {
-        return idMed;
+        return id_med;
     }
 
-    public void setIdMed(int idMed) {
-        this.idMed = idMed;
+    public void setIdMed(int id_med) {
+        this.id_med = id_med;
     }
      public void setNom(String nom) {
         this.nom = nom;
@@ -69,7 +69,7 @@ public class Medicament implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) idMed;
+        hash += (int) id_med;
         return hash;
     }
 
@@ -80,7 +80,7 @@ public class Medicament implements Serializable {
             return false;
         }
         Medicament other = (Medicament) object;
-        if (this.idMed != other.idMed) {
+        if (this.id_med != other.id_med) {
             return false;
         }
         return true;
@@ -88,7 +88,7 @@ public class Medicament implements Serializable {
 
     @Override
     public String toString() {
-        return "bureau.Medicament[ idMed=" + idMed + " ]";
+        return "bureau.Medicament[ id_med=" + id_med + " ]";
     }
     
 }

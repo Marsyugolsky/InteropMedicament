@@ -66,6 +66,9 @@ public class Crayon implements Serializable {
         return true;
         //tyest
     }
+    
+    public void test(){
+    }
 
     @Override
     public String toString() {

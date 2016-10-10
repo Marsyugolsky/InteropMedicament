@@ -64,9 +64,11 @@ public class Crayon implements Serializable {
             return false;
         }
         return true;
-        //tyest
+        
     }
-
+public void test23(){
+    System.out.println("coucou ca marche");
+}
     @Override
     public String toString() {
         return "bureau.Crayon[ id=" + id + " ]";

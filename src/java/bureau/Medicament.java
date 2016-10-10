@@ -47,11 +47,11 @@ public class Medicament implements Serializable {
         return cout;
     }
     
-    public int getIdMed() {
+    public int getId_med() {
         return id_med;
     }
 
-    public void setIdMed(int id_med) {
+    public void setId_med(int id_med) {
         this.id_med = id_med;
     }
      public void setNom(String nom) {

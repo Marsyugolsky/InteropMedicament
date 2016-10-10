@@ -5,6 +5,8 @@
  */
 package bureau;
 
+import java.util.HashMap;
+
 /**
  *
  * @author mgros
@@ -12,10 +14,13 @@ package bureau;
 public class Pharmacie {
     int id_pharma;
     String nom;
+    HashMap<Medicament, Integer> stock;
 
     public Pharmacie(int id_pharma, String nom) {
         this.id_pharma = id_pharma;
         this.nom = nom;
+        HashMap <Medicament , Integer > stock;
+
     }
 
     public int getId_pharma() {

@@ -69,6 +69,10 @@ public class Crayon implements Serializable {
 public void test23(){
     System.out.println("coucou ca marche");
 }
+    
+    public void test(){
+    }
+
     @Override
     public String toString() {
         return "bureau.Crayon[ id=" + id + " ]";

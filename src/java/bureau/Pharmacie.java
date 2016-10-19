@@ -42,6 +42,7 @@ public class Pharmacie {
 
     public void acheterMedicament(Medicament med, int quantite, Fournisseur four) throws Exception {
         int fournis = four.propose.get(med).intValue() - quantite;
+        //Un fournisseur ne peut pas avoir un stock négatif
         if (fournis < 0) {
             System.out.println("Le fournisseur ne peut pas avoir de stock négatif");
         } else {

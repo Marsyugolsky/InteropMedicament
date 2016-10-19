@@ -5,7 +5,8 @@
  */
 package bureau;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,12 +16,12 @@ public class Fournisseur {
 
     int id_four;
     String nom;
-    HashMap<Medicament, Integer> propose;
+    List<Propose> proposition;
 
     public Fournisseur(int id_four, String nom) {
         this.id_four = id_four;
         this.nom = nom;
-        propose = new HashMap<Medicament, Integer>();
+        proposition = new ArrayList<Propose>();
     }
 
     public void setId_four(int id_four) {
@@ -40,13 +41,20 @@ public class Fournisseur {
     }
 
     public void ajouterMedicament(Medicament med, int quantite) {
-        if (propose.containsKey(med)) {
-            //Le médicament est déjà créé, on ajoute alors la quantité
-            int res = propose.get(med).intValue() + quantite;
-            propose.replace(med, propose.get(med).intValue(), res);
-        } else {
-            //Création de la proposition d'un médicament dans leur liste
-            propose.put(med, quantite);
+        boolean existe = false;
+        for (Propose pro : proposition) {
+            if (pro.getMed().equals(med)) {
+                //Le médicament est déjà créé, on ajoute alors la quantité
+                pro.setQuantite(pro.getQuantite() + quantite);
+                existe = true;
+            }
+        }
+        //Création de la proposition d'un médicament dans leur liste
+        if (!existe) {
+            Propose newpro = new Propose(med, quantite);
+            proposition.add(newpro);
         }
     }
 }
+
+

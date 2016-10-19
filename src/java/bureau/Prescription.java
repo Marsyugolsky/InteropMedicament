@@ -5,7 +5,9 @@
  */
 package bureau;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -17,12 +19,14 @@ public class Prescription {
     Date date_press;
     Avancement avancement;
     int cout_total;
+    List<Compose> comp;
 
     public Prescription(int id_pres, Date date_press, Avancement avancement, int cout_total) {
         this.id_pres = id_pres;
         this.date_press = date_press;
         this.avancement = avancement;
         this.cout_total = cout_total;
+        comp = new ArrayList<Compose>();
     }
 
     public int getId_pres() {
@@ -57,4 +61,11 @@ public class Prescription {
         this.cout_total = cout_total;
     }
 
+    public int coutTotal() {
+        int res = 0;
+        for (Compose co : comp) {
+            res = res + co.getMed().getCout() * co.getQuantite();
+        }
+        return res;
+    }
 }

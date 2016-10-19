@@ -41,9 +41,11 @@ public class Fournisseur {
 
     public void ajouterMedicament(Medicament med, int quantite) {
         if (propose.containsKey(med)) {
+            //Le médicament est déjà créé, on ajoute alors la quantité
             int res = propose.get(med).intValue() + quantite;
             propose.replace(med, propose.get(med).intValue(), res);
         } else {
+            //Création de la proposition d'un médicament dans leur liste
             propose.put(med, quantite);
         }
     }

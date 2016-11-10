@@ -40,6 +40,10 @@ public class Fournisseur {
         return nom;
     }
 
+    public List<Propose> getProposition() {
+        return proposition;
+    }
+
     public void ajouterMedicament(Medicament med, int quantite) {
         boolean existe = false;
         for (Propose pro : proposition) {

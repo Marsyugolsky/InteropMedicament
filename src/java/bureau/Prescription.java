@@ -67,7 +67,7 @@ public class Prescription {
         }
         return res;
     }
-    public void ajouterComposition(Compose liste){
-        
+    public void ajouterComposition(Compose comp){
+        liste.add(comp);
     }
 }

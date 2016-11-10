@@ -25,6 +25,10 @@ public class Pharmacie {
         stock = new ArrayList<Stock>();
     }
 
+    public List<Stock> getStock() {
+        return stock;
+    }
+
     public int getId_pharma() {
         return id_pharma;
     }

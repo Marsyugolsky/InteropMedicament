@@ -16,7 +16,7 @@ public class fournisseurTest {
     @Test
     public void testAcheterMedicament() {
         Fournisseur four = new Fournisseur(1, "Pierre Fabre");
-        Medicament med = new Medicament(1, "nom", "molecule", 20);
+        Medicament med = new Medicament("nom", "molecule", 20);
         int quantite = 1;
         assert (four.getProposition().isEmpty());
         four.ajouterMedicament(med, quantite);
@@ -30,7 +30,7 @@ public class fournisseurTest {
         assert (four.getProposition().get(0).getMed().equals(med));
         assert (four.getProposition().get(0).getQuantite() == quantite+1);
         
-        Medicament med2 = new Medicament(2, "Boura", "Alex", 200);
+        Medicament med2 = new Medicament("Boura", "Alex", 200);
         four.ajouterMedicament(med2, quantite);
         assert (four.getProposition().size() == 2);
         assert (four.getProposition().get(1).getMed().equals(med2));

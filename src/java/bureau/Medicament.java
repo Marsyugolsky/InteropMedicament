@@ -35,8 +35,8 @@ public class Medicament implements Serializable {
     
     private int cout;
 
-    public Medicament(int id_med, String nom, String molecule, int cout) {
-        this.id_med = id_med;
+    public Medicament(String nom, String molecule, int cout) {
+      //  this.id_med = id_med;
         this.nom = nom;
         this.molecule = molecule;
         this.cout = cout;

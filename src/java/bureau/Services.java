@@ -221,7 +221,7 @@ public class Services {
         return res;
     }
      public Medicament newMedicament(String nom,String molecule, int cout) {
-        Medicament m = new Medicament(1, nom, molecule, cout);
+        Medicament m = new Medicament(nom, molecule, cout);
         m.setNom(nom);
         m.setMolecule(molecule);
 	em.getTransaction( ).begin( );

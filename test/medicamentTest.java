@@ -1,5 +1,9 @@
 
+import bureau.Crayon;
+import bureau.DatabaseUtils;
 import bureau.Medicament;
+import bureau.Services;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -14,6 +18,7 @@ import org.junit.Test;
  */
 public class medicamentTest {
 
+    /*
     @Test
     public void testCompatible() {
         Medicament med = new Medicament(1, "nom", "molecule", 20);
@@ -24,6 +29,19 @@ public class medicamentTest {
         compatible = med.compatible(med3);
         assert (compatible == false);
     }
+    */
+      @Test
+    public void testpersistance() {
+        Services serv = new Services(DatabaseUtils.fact());
+    
+        Medicament med = serv.newMedicament("nom", "molecule", 20);
+       
+        assert (med.getId_med() != 0);
+        
+        List<Medicament> med2 = serv.getMedicamentsByNomId("nom");
+        assert(med2 != null && med2.size() == 1 && med2.get(0).getCout() == 20);
+    }
+    
     
     
 }

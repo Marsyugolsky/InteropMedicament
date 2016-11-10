@@ -18,18 +18,18 @@ import org.junit.Test;
  */
 public class medicamentTest {
 
-    /*
+   
     @Test
     public void testCompatible() {
-        Medicament med = new Medicament(1, "nom", "molecule", 20);
-        Medicament med2 = new Medicament(2, "nom2", "molecule2", 30);
-        Medicament med3 = new Medicament(3, "nom3", "molecule", 20);
+        Medicament med = new Medicament( "nom", "molecule", 20);
+        Medicament med2 = new Medicament( "nom2", "molecule2", 30);
+        Medicament med3 = new Medicament( "nom3", "molecule", 20);
         boolean compatible = med.compatible(med2);
         assert (compatible == true);
         compatible = med.compatible(med3);
         assert (compatible == false);
     }
-    */
+    
       @Test
     public void testpersistance() {
         Services serv = new Services(DatabaseUtils.fact());

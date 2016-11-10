@@ -19,8 +19,7 @@ public class Pharmacie {
     String nom;
     List<Stock> stock;
 
-    public Pharmacie(int id_pharma, String nom) {
-        this.id_pharma = id_pharma;
+    public Pharmacie( String nom) {
         this.nom = nom;
         stock = new ArrayList<Stock>();
     }

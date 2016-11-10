@@ -15,7 +15,7 @@ import org.junit.Test;
 public class fournisseurTest {
     @Test
     public void testAcheterMedicament() {
-        Fournisseur four = new Fournisseur(1, "Pierre Fabre");
+        Fournisseur four = new Fournisseur("Pierre Fabre");
         Medicament med = new Medicament("nom", "molecule", 20);
         int quantite = 1;
         assert (four.getProposition().isEmpty());

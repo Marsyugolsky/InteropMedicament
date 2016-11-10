@@ -14,8 +14,7 @@ public class Preparateur {
     String nom;
     String prenom;
 
-    public Preparateur(int id_prepa, String nom, String prenom) {
-        this.id_prepa = id_prepa;
+    public Preparateur( String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
     }

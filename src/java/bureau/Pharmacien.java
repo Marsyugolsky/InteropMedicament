@@ -15,8 +15,7 @@ public class Pharmacien {
     String nom;
     String prenom;
 
-    public Pharmacien(int id_boss, String nom, String prenom) {
-        this.id_boss = id_boss;
+    public Pharmacien( String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
     }

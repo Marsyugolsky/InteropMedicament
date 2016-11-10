@@ -17,9 +17,9 @@ public class pharmacieTest {
 
     @Test
     public void testAcheterMedicament() {
-        Fournisseur four = new Fournisseur(1, "Pierre Fabre");
+        Fournisseur four = new Fournisseur("Pierre Fabre");
         Medicament med = new Medicament( "nom", "molecule", 20);
-        Pharmacie pharma = new Pharmacie(1, "pharma");
+        Pharmacie pharma = new Pharmacie( "pharma");
         int quantite = 100;
         four.ajouterMedicament(med, quantite);
         assert (pharma.getStock().isEmpty());

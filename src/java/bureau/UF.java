@@ -14,8 +14,7 @@ public class UF {
     int id_uf;
     String libelle;
 
-    public UF(int id_uf, String libelle) {
-        this.id_uf = id_uf;
+    public UF( String libelle) {
         this.libelle = libelle;
     }
 

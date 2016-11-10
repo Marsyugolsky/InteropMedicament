@@ -13,11 +13,23 @@ public class Compose {
     Medicament med;
     int quantite;
     Administration administration;
+    Preparateur preparateur;
+    Pharmacie pharmacie;
 
-    public Compose(Medicament med, int quantite, Administration administration) {
+    public Compose(Medicament med, int quantite, Administration administration,Preparateur preparateur,Pharmacie pharmacie) {
         this.med = med;
         this.quantite = quantite;
         this.administration = administration;
+        this.preparateur = preparateur;
+        this.pharmacie = pharmacie;
+    }
+
+    public void setPreparateur(Preparateur preparateur) {
+        this.preparateur = preparateur;
+    }
+
+    public Preparateur getPreparateur() {
+        return preparateur;
     }
 
     public Medicament getMed() {

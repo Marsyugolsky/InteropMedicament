@@ -80,28 +80,30 @@ public class Medicament implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Medicament)) {
-            return false;
-        }
-        Medicament other = (Medicament) object;
-        if (this.id_med != other.id_med) {
-            return false;
-        }
-        return true;
-    }
-public boolean compatible(Medicament med1, Medicament med2){
-    if(med1.equals(med2)){
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Medicament)) {
+//            return false;
+//        }
+//        Medicament other = (Medicament) object;
+//        if (this.id_med != other.id_med) {
+//            return false;
+//        }
+//        return true;
+//    }
+    
+public boolean compatible(Medicament med1){
+    if(this.equals(med1)){
         return false;
     }
-    if(med1.getMolecule().equals(med2.getMolecule())){
+    if(this.getMolecule().equals(med1.getMolecule())){
         return false;
     }
     
     return true;
 }
+
     @Override
     public String toString() {
         return "bureau.Medicament[ id_med=" + id_med + " ]";

@@ -18,15 +18,12 @@ public class Fournisseur {
     String nom;
     List<Propose> proposition;
 
-    public Fournisseur(int id_four, String nom) {
-        this.id_four = id_four;
+    public Fournisseur( String nom) {
         this.nom = nom;
         proposition = new ArrayList<Propose>();
     }
 
-    public void setId_four(int id_four) {
-        this.id_four = id_four;
-    }
+   
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -38,6 +35,10 @@ public class Fournisseur {
 
     public String getNom() {
         return nom;
+    }
+
+    public List<Propose> getProposition() {
+        return proposition;
     }
 
     public void ajouterMedicament(Medicament med, int quantite) {

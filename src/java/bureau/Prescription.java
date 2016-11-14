@@ -19,15 +19,17 @@ public class Prescription {
     Date date_press;
     Avancement avancement;
     int cout_total;
-    
-    List<Compose> composition;
 
-    public Prescription(int id_pres, Date date_press, Avancement avancement, int cout_total) {
-        this.id_pres = id_pres;
+    List<Compose> liste;
+
+
+    public Prescription( Date date_press, Avancement avancement, int cout_total) {
         this.date_press = date_press;
         this.avancement = avancement;
         this.cout_total = cout_total;
-        composition = new ArrayList<Compose>();
+
+        liste = new ArrayList<Compose>();
+
     }
 
     public int getId_pres() {
@@ -66,10 +68,15 @@ public class Prescription {
         
     }
 
-    /*
-    public int calculCout() {
-
-        return cout_total;
+    public int coutTotal() {
+        int res = 0;
+        for (Compose co : liste) {
+            res = res + co.getMed().getCout() * co.getQuantite();
+        }
+        return res;
     }
-     */
+    public void ajouterComposition(Compose comp){
+        liste.add(comp);
+    }
+
 }

@@ -10,7 +10,7 @@ package bureau;
  * @author mgros
  */
 public class Stock {
-     Medicament med;
+    Medicament med;
     int quantite;
 
     public Stock(Medicament med, int quantite) {

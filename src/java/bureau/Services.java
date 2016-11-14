@@ -421,6 +421,67 @@ public class Services {
         return res;
     }
     
+    //////////////////// P H A R M A C I E ////////////////////
     
+     public void newPharmacie(Pharmacie ph) {
+	em.getTransaction( ).begin( );
+        em.persist(ph);
+        em.getTransaction().commit();
+    }
+    
+    public void removePharmacie(int idPh) {
+       
+        Pharmacie ph = em.find( Pharmacie.class, idPh );
+	em.getTransaction( ).begin( );
+        em.remove(ph);
+        em.getTransaction().commit();
+       
+    }
+     public void deleteAllPharmacie() {
+      
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Pharmacie").executeUpdate();
+        em.getTransaction().commit();
+        
+    }
+     public void editPharmacie(Pharmacie ph) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(ph);
+        em.getTransaction().commit();
+     
+    }
+    
+    public Pharmacie getPharmaciesById(int idPh) {
+       
+	Pharmacie ph = em.find( Pharmacie.class, idPh );
+      
+        return ph;
+    }
+    
+         public List<Pharmacie> getPharmaciesByNom(String nom) {
+     
+        TypedQuery<Pharmacie> query = em.createQuery("SELECT p FROM Pharmacie p WHERE p.nom = :nom", Pharmacie.class)
+                .setParameter("nom",nom);
+        List<Pharmacie> res = query.getResultList();
+     
+        return res;
+    }
+    
+     public List<Pharmacie> getAllPharmacies() {
+	TypedQuery<Pharmacie> query = em.createQuery("SELECT p FROM Pharmacie p", Pharmacie.class);
+        List<Pharmacie> res = query.getResultList();
+        return res;
+    }
+    
+     public Pharmacie newPharmacie(String nom) {
+        Pharmacie ph = new Pharmacie(nom);
+        ph.setNom(nom);
+	em.getTransaction( ).begin( );
+        em.persist(ph);
+        em.getTransaction().commit();
+      
+        return ph;
+    }
     
  }

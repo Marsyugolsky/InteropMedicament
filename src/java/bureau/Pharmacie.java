@@ -5,17 +5,32 @@
  */
 package bureau;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author mgros
  */
-public class Pharmacie {
 
-    int id_pharma;
+@Entity
+@XmlRootElement
+public class Pharmacie implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id_pharma;
+
+    @Column
+
     String nom;
     List<Stock> stock;
 

@@ -14,26 +14,15 @@ public class Compose {
     Preparateur preparateur;
     Pharmacie pharmacie;
 
-    public Compose(Medicament med, int quantite, Administration administration, Preparateur preparateur, Pharmacie pharmacie) throws Exception {
-        try {
+    public Compose(Medicament med, int quantite, Administration administration, Preparateur preparateur, Pharmacie pharmacie) {
+        
             this.med = med;
-            for (Stock pharmastock : pharmacie.stock) {
-                if (pharmastock.getMed().equals(med)) {
-                    //Vérification des stocks
-                    if (pharmastock.getQuantite() - quantite >= 0) {
-                        pharmastock.setQuantite(pharmastock.getQuantite()-quantite);
-                        this.quantite = quantite; 
-                    } else {
-                        throw new Exception("il n'y a plus de médicament en stock");
-                    }
-                }
-            }
             this.administration = administration;
             this.preparateur = preparateur;
+            this.quantite=quantite;
+            this.pharmacie=pharmacie;
 
-        } catch (Exception e) {
-            System.out.println("quantité de médicament dans la pharmacie insufisant");
-        }
+        
     }
 
     public void setPharmacie(Pharmacie pharmacie) {

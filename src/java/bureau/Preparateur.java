@@ -6,6 +6,7 @@
 package bureau;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,10 +18,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author mgros
  */
-
 @Entity
 @XmlRootElement
 public class Preparateur implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +32,7 @@ public class Preparateur implements Serializable {
     String nom;
     String prenom;
 
-    public Preparateur( String nom, String prenom) {
+    public Preparateur(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
     }
@@ -59,6 +60,25 @@ public class Preparateur implements Serializable {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-    
-    
+
+    public void creerPrescription() {
+        Prescription pres = new Prescription(new Date(), Avancement.prepare);
+
+    }
+
+    public void ajouterLigne(Medicament med, int quantite, Administration admin, Pharmacie pharmacie,Prescription pres) throws Exception {
+        for (Stock pharmastock : pharmacie.stock) {
+            if (pharmastock.getMed().equals(med)) {
+                //Vérification des stocks
+                if (pharmastock.getQuantite() - quantite >= 0) {
+                    pharmastock.setQuantite(pharmastock.getQuantite() - quantite);
+                } else {
+                    throw new Exception("il n'y a plus de médicament en stock");
+                }
+            }
+        }
+        Compose comp = new Compose(med, quantite, admin, this, pharmacie);
+        pres.ajouterMedicamentPrescription(comp);
+    }
+
 }

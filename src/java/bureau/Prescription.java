@@ -37,10 +37,10 @@ public class Prescription implements Serializable {
     List<Compose> liste;
 
 
-    public Prescription( Date date_press, Avancement avancement, int cout_total) {
+    public Prescription( Date date_press, Avancement avancement) {
         this.date_press = date_press;
         this.avancement = avancement;
-        this.cout_total = cout_total;
+        this.cout_total = 0;
 
         liste = new ArrayList<Compose>();
 
@@ -78,8 +78,9 @@ public class Prescription implements Serializable {
         this.cout_total = cout_total;
     }
     
-    public void ajouterMedicamentPrescription (Medicament med, int quantite, Administration administration, Preparateur preparateur) {
-        
+    public void ajouterMedicamentPrescription (Compose comp) {
+        liste.add(comp);
+        setCout_total(this.coutTotal());
     }
 
     public int coutTotal() {
@@ -89,8 +90,6 @@ public class Prescription implements Serializable {
         }
         return res;
     }
-    public void ajouterComposition(Compose comp){
-        liste.add(comp);
-    }
+    
 
 }

@@ -19,7 +19,7 @@ public class Pharmacie {
     String nom;
     List<Stock> stock;
 
-    public Pharmacie( String nom) {
+    public Pharmacie(String nom) {
         this.nom = nom;
         stock = new ArrayList<Stock>();
     }
@@ -44,7 +44,7 @@ public class Pharmacie {
         this.nom = nom;
     }
 
-    public void acheterMedicament(Medicament med, int quantite, Fournisseur four) {
+    public void acheterMedicament(Medicament med, int quantite, Fournisseur four) throws Exception {
         //récupération de la liste du fournisseur
         boolean existe = false;
         boolean fourOk = true;
@@ -53,7 +53,7 @@ public class Pharmacie {
             if (pro.getMed().equals(med)) {
                 //On regarde si le fournisseur peut fournir la quantité demandée
                 if (pro.getQuantite() - quantite < 0) {
-                    fourOk = false;
+                    throw new Exception("il n'y a plus de médicament en stock");
                 }
                 if (fourOk) {
                     for (Stock stockMed : stock) {
@@ -68,12 +68,9 @@ public class Pharmacie {
                         Stock newStock = new Stock(med, quantite);
                         stock.add(newStock);
                     }
-                } else {
-                    System.out.println("Le fournisseur n'a pas suffisament de médicament");
-                }
+                } 
             }
         }
     }
 
-    
 }

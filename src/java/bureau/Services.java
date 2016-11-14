@@ -5,6 +5,7 @@
  */
 package bureau;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -164,6 +165,9 @@ public class Services {
         em.getTransaction().commit();
         
     }
+    
+    //////////////////// M E D I C A M E N T ////////////////////
+    
      public void newMedicament(Medicament med) {
 	em.getTransaction( ).begin( );
         em.persist(med);
@@ -236,6 +240,116 @@ public class Services {
                 .setParameter("molecule",molecule);
         List<Medicament> res = query.getResultList();
      
+        return res;
+    }
+     
+     //////////////////// F O U R N I S S E U R ////////////////////
+    
+     public void newFournisseur(Fournisseur four) {
+	em.getTransaction( ).begin( );
+        em.persist(four);
+        em.getTransaction().commit();
+    }
+    
+    public void removeFournisseur(int idFour) {
+       
+        Medicament four = em.find( Medicament.class, idFour );
+	em.getTransaction( ).begin( );
+        em.remove(four);
+        em.getTransaction().commit();
+       
+    }
+     public void deleteAllFournisseur() {
+      
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Fournisseur").executeUpdate();
+        em.getTransaction().commit();
+        
+    }
+     public void editFournisseur(Fournisseur four) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(four);
+        em.getTransaction().commit();
+     
+    }
+    
+    public Fournisseur getFournisseursById(int idFour) {
+       
+	Fournisseur res = em.find( Fournisseur.class, idFour );
+      
+        return res;
+    }
+     public List<Fournisseur> getAllFournisseurs() {
+	TypedQuery<Fournisseur> query = em.createQuery("SELECT f FROM Fournisseur f", Fournisseur.class);
+        List<Fournisseur> res = query.getResultList();
+        return res;
+    }
+     public List<Fournisseur> getFournisseursByNomId(String nom) {
+     
+        TypedQuery<Fournisseur> query = em.createQuery("SELECT f FROM Fournisseur f WHERE f.nom = :nom", Fournisseur.class)
+                .setParameter("nom",nom);
+        List<Fournisseur> res = query.getResultList();
+     
+        return res;
+    }
+     
+         //////////////////// P R E S C R I P T I O N ////////////////////
+    
+     public void newPrescription(Prescription pres) {
+	em.getTransaction( ).begin( );
+        em.persist(pres);
+        em.getTransaction().commit();
+    }
+    
+    public void removePrescription(int idPres) {
+       
+        Prescription pres = em.find( Prescription.class, idPres );
+	em.getTransaction( ).begin( );
+        em.remove(pres);
+        em.getTransaction().commit();
+       
+    }
+     public void deleteAllPrescription() {
+      
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Prescription").executeUpdate();
+        em.getTransaction().commit();
+        
+    }
+     public void editPrescription(Prescription pres) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(pres);
+        em.getTransaction().commit();
+     
+    }
+         public List<Prescription> getPrescriptionsByNomPreparateur(String nom) {
+     // a voir pour la requete SQL
+        TypedQuery<Prescription> query = em.createQuery("SELECT p FROM Prescription p WHERE p.no m = :nom", Prescription.class)
+                .setParameter("nom",nom);
+        List<Prescription> res = query.getResultList();
+     
+        return res;
+    }
+             public List<Prescription> getPrescriptionsByDate(Date date_press) {
+     
+        TypedQuery<Prescription> query = em.createQuery("SELECT d FROM Prescription d WHERE d.date_press = :date_press", Prescription.class)
+                .setParameter("date_press",date_press);
+        List<Prescription> res = query.getResultList();
+     
+        return res;
+    } 
+         
+    public Prescription getPrescriptionsById(int idPres) {
+       
+	Prescription res = em.find( Prescription.class, idPres );
+      
+        return res;
+    }
+     public List<Prescription> getAllPrescriptions() {
+	TypedQuery<Prescription> query = em.createQuery("SELECT p FROM Prescription p", Prescription.class);
+        List<Prescription> res = query.getResultList();
         return res;
     }
  }

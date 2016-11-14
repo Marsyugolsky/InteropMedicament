@@ -340,6 +340,15 @@ public class Services {
      
         return res;
     } 
+             
+    public List<Prescription> getPrescriptionsByAvancement(Avancement avancement) {
+
+        TypedQuery<Prescription> query = em.createQuery("SELECT a FROM Prescription a WHERE a.avancement = :avancement", Prescription.class)
+                .setParameter("avancement", avancement);
+        List<Prescription> res = query.getResultList();
+
+        return res;
+    }
          
     public Prescription getPrescriptionsById(int idPres) {
        
@@ -352,4 +361,66 @@ public class Services {
         List<Prescription> res = query.getResultList();
         return res;
     }
+     
+     //////////////////// P R E P A R A T E U R ////////////////////
+     
+     public void newPreparateur(Preparateur preparateur) {
+	em.getTransaction( ).begin( );
+        em.persist(preparateur);
+        em.getTransaction().commit();
+    }
+
+    public Preparateur newPreparateur(String nom, String prenom) {
+        Preparateur p = new Preparateur(nom, prenom);
+        p.setNom(nom);
+        p.setPrenom(prenom);
+     
+	em.getTransaction( ).begin( );
+        em.persist(p);
+        em.getTransaction().commit();
+      
+        return p;
+    }
+    
+    public void removePreparateur(int idPrepa) {
+       
+        Preparateur prepa = em.find( Preparateur.class, idPrepa );
+	em.getTransaction( ).begin( );
+        em.remove(prepa);
+        em.getTransaction().commit();
+       
+    }
+    
+    public void deletePreparateur(int idPrepa) {
+       
+        Preparateur p = em.find( Preparateur.class, idPrepa );
+	em.getTransaction( ).begin( );
+        em.remove(p);
+        em.getTransaction().commit();
+       
+    }
+  
+    public void editPreparateur(Preparateur p) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(p);
+        em.getTransaction().commit();
+     
+    }
+    
+    public Preparateur getPreparateursById(int idPrepa) {
+       
+	Preparateur res = em.find( Preparateur.class, idPrepa );
+      
+        return res;
+    }
+    
+    public List<Preparateur> getAllPreparateurs() {
+	TypedQuery<Preparateur> query = em.createQuery("SELECT p FROM Preparateur p", Preparateur.class);
+        List<Preparateur> res = query.getResultList();
+        return res;
+    }
+    
+    
+    
  }

@@ -47,7 +47,6 @@ public class Pharmacie {
     public void acheterMedicament(Medicament med, int quantite, Fournisseur four) throws Exception {
         //récupération de la liste du fournisseur
         boolean existe = false;
-        boolean fourOk = true;
         //On regarde si le fournisseur à le médicament
         for (Propose pro : four.proposition) {
             if (pro.getMed().equals(med)) {
@@ -55,20 +54,21 @@ public class Pharmacie {
                 if (pro.getQuantite() - quantite < 0) {
                     throw new Exception("il n'y a plus de médicament en stock");
                 }
-                if (fourOk) {
-                    for (Stock stockMed : stock) {
-                        //On regarde si la pharmacie a le médicament sinon on en créé un nouveau
-                        if (stockMed.getMed().equals(med)) {
-                            stockMed.setQuantite(stockMed.getQuantite() + quantite);
-                            pro.setQuantite(pro.getQuantite() - quantite);
-                            existe = true;
-                        }
+                for (Stock stockMed : stock) {
+                    //On regarde si la pharmacie a le médicament sinon on en créé un nouveau
+                    if (stockMed.getMed().equals(med)) {
+                        stockMed.setQuantite(stockMed.getQuantite() + quantite);
+                        pro.setQuantite(pro.getQuantite() - quantite);
+                        existe = true;
                     }
-                    if (!existe) {
-                        Stock newStock = new Stock(med, quantite);
-                        stock.add(newStock);
-                    }
-                } 
+                }
+                if (!existe) {
+                    Stock newStock = new Stock(med, quantite);
+                    stock.add(newStock);
+                    pro.setQuantite(pro.getQuantite() - quantite);
+
+                }
+
             }
         }
     }

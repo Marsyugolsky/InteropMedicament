@@ -16,27 +16,30 @@ import org.junit.Test;
 public class pharmacieTest {
 
     @Test
-    public void testAcheterMedicament() {
+    public void testAcheterMedicament() throws Exception {
+        //initialisation
         Fournisseur four = new Fournisseur("Pierre Fabre");
         Medicament med = new Medicament( "nom", "molecule", 20);
         Pharmacie pharma = new Pharmacie( "pharma");
         int quantite = 100;
         four.ajouterMedicament(med, quantite);
         assert (pharma.getStock().isEmpty());
+        //création du médicament dans le stock et calcul des stocks
         pharma.acheterMedicament(med, 50, four);
         assert (pharma.getStock().size() == 1);
         assert (pharma.getStock().get(0).getMed().equals(med));
         assert (pharma.getStock().get(0).getQuantite() == 50);
         assert (four.getProposition().get(0).getQuantite() == 50);
+        //mise à jour des stocks
         pharma.acheterMedicament(med, 20, four);
         assert (pharma.getStock().size() == 1);
         assert (pharma.getStock().get(0).getQuantite() == 70);
         assert (four.getProposition().get(0).getQuantite() == 30);
-        
+        //achat impossible, il doit lever une exception
         pharma.acheterMedicament(med, 200, four);
         assert (pharma.getStock().get(0).getQuantite() == 70);
         assert (four.getProposition().get(0).getQuantite() == 30);
-
+        //achat d'un deuxième médicament
         Medicament med2 = new Medicament( "Boura", "Alex", 200);
         quantite = 200;
         four.ajouterMedicament(med2, quantite);

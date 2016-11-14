@@ -1,5 +1,4 @@
 
-import bureau.Crayon;
 import bureau.DatabaseUtils;
 import bureau.Medicament;
 import bureau.Services;

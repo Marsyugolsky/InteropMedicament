@@ -484,4 +484,138 @@ public class Services {
         return ph;
     }
     
+     //////////////////// U F ////////////////////
+    
+     public void newUF(UF uf) {
+	em.getTransaction( ).begin( );
+        em.persist(uf);
+        em.getTransaction().commit();
+    }
+    
+    public void removeUF(int idUF) {
+       
+        UF uf = em.find( UF.class, idUF );
+	em.getTransaction( ).begin( );
+        em.remove(uf);
+        em.getTransaction().commit();
+       
+    }
+     public void deleteAllUF() {
+      
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM UF").executeUpdate();
+        em.getTransaction().commit();
+        
+    }
+     public void editUF(UF uf) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(uf);
+        em.getTransaction().commit();
+     
+    }
+    
+    public UF getUFsById(int idUF) {
+       
+	UF uf = em.find( UF.class, idUF );
+      
+        return uf;
+    }
+     public List<UF> getAllUFs() {
+	TypedQuery<UF> query = em.createQuery("SELECT u FROM UF u", UF.class);
+        List<UF> uf = query.getResultList();
+        return uf;
+    }
+    
+     public List<UF> getMedicamentsByLibelle(String libelle) {
+     
+        TypedQuery<UF> query = em.createQuery("SELECT u FROM UF u WHERE u.libelle = :libelle", UF.class)
+                .setParameter("libelle",libelle);
+        List<UF> uf = query.getResultList();
+     
+        return uf;
+    }
+     public UF newUF(String libelle) {
+        UF uf = new UF(libelle);
+        uf.setLibelle(libelle);
+	em.getTransaction( ).begin( );
+        em.persist(uf);
+        em.getTransaction().commit();
+      
+        return uf;
+    }
+
+     //////////////////// A D M I S S I O N ////////////////////
+    
+     public void newAdmission(Admission ad) {
+	em.getTransaction( ).begin( );
+        em.persist(ad);
+        em.getTransaction().commit();
+    }
+    
+    public void removeAdmission(int idAd) {
+       
+        Admission ad = em.find( Admission.class, idAd );
+	em.getTransaction( ).begin( );
+        em.remove(ad);
+        em.getTransaction().commit();
+       
+    }
+     public void deleteAllAdmission() {
+      
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Admission").executeUpdate();
+        em.getTransaction().commit();
+        
+    }
+     public void editAdmission(Admission ad) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(ad);
+        em.getTransaction().commit();
+     
+    }
+    
+    public Admission getAdmissionsByIEP(int IEP) {
+       
+	Admission res = em.find( Admission.class, IEP );
+      
+        return res;
+    }
+     public List<Admission> getAllAdmissions() {
+	TypedQuery<Admission> query = em.createQuery("SELECT a FROM Admission a", Admission.class);
+        List<Admission> res = query.getResultList();
+        return res;
+    }
+    
+     public List<Admission> getAdmissionsByIPP(int IPP) {
+     
+        TypedQuery<Admission> query = em.createQuery("SELECT a FROM Admission a WHERE a.IPP = :IPP", Admission.class)
+                .setParameter("IPP",IPP);
+        List<Admission> res = query.getResultList();
+     
+        return res;
+    }
+     
+    public List<Admission> getAdmissionsByNom(String nom) {
+     
+        TypedQuery<Admission> query = em.createQuery("SELECT a FROM Admission a WHERE a.nom = :nom", Admission.class)
+                .setParameter("nom",nom);
+        List<Admission> res = query.getResultList();
+     
+        return res;
+    }
+     
+     public Admission newAdmission(int IEP, int IPP, String nom) {
+        Admission m = new Admission(IEP, IPP, nom);
+        m.setIEP(IEP);
+        m.setIPP(IPP);
+        m.setNom(nom);
+	em.getTransaction( ).begin( );
+        em.persist(m);
+        em.getTransaction().commit();
+      
+        return m;
+    }
+  
  }

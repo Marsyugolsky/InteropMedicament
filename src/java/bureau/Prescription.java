@@ -34,7 +34,15 @@ public class Prescription implements Serializable {
     Avancement avancement;
     int cout_total;
 
-    List<Compose> liste;
+    List<Compose> compose;
+
+    public List<Compose> getCompose() {
+        return compose;
+    }
+
+    public void setCompose(List<Compose> compose) {
+        this.compose = compose;
+    }
 
 
     public Prescription( Date date_press, Avancement avancement) {
@@ -42,7 +50,7 @@ public class Prescription implements Serializable {
         this.avancement = avancement;
         this.cout_total = 0;
 
-        liste = new ArrayList<Compose>();
+        compose = new ArrayList<Compose>();
 
     }
 
@@ -79,13 +87,13 @@ public class Prescription implements Serializable {
     }
     
     public void ajouterMedicamentPrescription (Compose comp) {
-        liste.add(comp);
+        compose.add(comp);
         setCout_total(this.coutTotal());
     }
 
     public int coutTotal() {
         int res = 0;
-        for (Compose co : liste) {
+        for (Compose co : compose) {
             res = res + co.getMed().getCout() * co.getQuantite();
         }
         return res;

@@ -5,9 +5,22 @@
  */
 package bureau;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Compose {
+@Entity
+@XmlRootElement
+public class Compose implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     Medicament med;
     int quantite;
     Administration administration;
@@ -15,14 +28,13 @@ public class Compose {
     Pharmacie pharmacie;
 
     public Compose(Medicament med, int quantite, Administration administration, Preparateur preparateur, Pharmacie pharmacie) {
-        
-            this.med = med;
-            this.administration = administration;
-            this.preparateur = preparateur;
-            this.quantite=quantite;
-            this.pharmacie=pharmacie;
 
-        
+        this.med = med;
+        this.administration = administration;
+        this.preparateur = preparateur;
+        this.quantite = quantite;
+        this.pharmacie = pharmacie;
+
     }
 
     public void setPharmacie(Pharmacie pharmacie) {

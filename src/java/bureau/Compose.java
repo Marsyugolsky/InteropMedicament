@@ -17,19 +17,21 @@ public class Compose {
     public Compose(Medicament med, int quantite, Administration administration, Preparateur preparateur, Pharmacie pharmacie) throws Exception {
         
             this.med = med;
-            for (Stock pharmastock : pharmacie.stock) {
-                if (pharmastock.getMed().equals(med)) {
-                    //Vérification des stocks
-                    if (pharmastock.getQuantite() - quantite >= 0) {
-                        pharmastock.setQuantite(pharmastock.getQuantite()-quantite);
-                        this.quantite = quantite; 
-                    } else {
-                        throw new Exception("il n'y a plus de médicament en stock");
-                    }
-                }
-            }
+//            for (Stock pharmastock : pharmacie.stock) {
+//                if (pharmastock.getMed().equals(med)) {
+//                    //Vérification des stocks
+//                    if (pharmastock.getQuantite() - quantite >= 0) {
+//                        pharmastock.setQuantite(pharmastock.getQuantite()-quantite);
+//                        this.quantite = quantite; 
+//                    } else {
+//                        throw new Exception("il n'y a plus de médicament en stock");
+//                    }
+//                }
+//            }
             this.administration = administration;
             this.preparateur = preparateur;
+            this.quantite=quantite;
+            this.pharmacie=pharmacie;
 
         
     }

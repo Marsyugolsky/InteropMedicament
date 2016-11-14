@@ -617,5 +617,48 @@ public class Services {
       
         return m;
     }
-  
+     
+     //////////////////// C O M P O S E ////////////////////
+    
+     public void newCompose(Compose comp) {
+	em.getTransaction( ).begin( );
+        em.persist(comp);
+        em.getTransaction().commit();
+    }
+    
+    public void removeCompose(int idComp) {
+       
+        Compose comp = em.find( Compose.class, idComp );
+	em.getTransaction( ).begin( );
+        em.remove(comp);
+        em.getTransaction().commit();
+       
+    }
+     public void deleteAllCompose() {
+      
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Compose").executeUpdate();
+        em.getTransaction().commit();
+        
+    }
+     public void editCompose(Compose comp) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(comp);
+        em.getTransaction().commit();
+     
+    }
+    
+    public Compose getComposesById(int idComp) {
+       
+	Compose comp = em.find( Compose.class, idComp );
+      
+        return comp;
+    }
+     public List<Compose> getAllComposes() {
+	TypedQuery<Compose> query = em.createQuery("SELECT c FROM Compose c", Compose.class);
+        List<Compose> comp = query.getResultList();
+        return comp;
+    }
+    
  }

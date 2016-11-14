@@ -79,7 +79,7 @@ public class Prescription implements Serializable {
     }
     
     public void ajouterMedicamentPrescription (Compose comp) {
-        this.ajouterComposition(comp);
+        liste.add(comp);
         setCout_total(this.coutTotal());
     }
 
@@ -90,8 +90,6 @@ public class Prescription implements Serializable {
         }
         return res;
     }
-    public void ajouterComposition(Compose comp){
-        liste.add(comp);
-    }
+    
 
 }

@@ -15,6 +15,7 @@ import org.junit.Test;
 public class fournisseurTest {
     @Test
     public void testAcheterMedicament() {
+        // achat d'un médicament
         Fournisseur four = new Fournisseur("Pierre Fabre");
         Medicament med = new Medicament("nom", "molecule", 20);
         int quantite = 1;
@@ -23,13 +24,13 @@ public class fournisseurTest {
         assert (four.getProposition().size() == 1);
         assert (four.getProposition().get(0).getMed().equals(med));
         assert (four.getProposition().get(0).getQuantite() == quantite);
-        
+        //mise à jour du stock
         quantite = 4;
         four.ajouterMedicament(med, quantite);
         assert (four.getProposition().size() == 1);
         assert (four.getProposition().get(0).getMed().equals(med));
         assert (four.getProposition().get(0).getQuantite() == quantite+1);
-        
+        //achat d'un deuxième médicament
         Medicament med2 = new Medicament("Boura", "Alex", 200);
         four.ajouterMedicament(med2, quantite);
         assert (four.getProposition().size() == 2);

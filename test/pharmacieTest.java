@@ -2,7 +2,9 @@
 import bureau.Fournisseur;
 import bureau.Medicament;
 import bureau.Pharmacie;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,7 +16,8 @@ import org.junit.Test;
  * @author mgros
  */
 public class pharmacieTest {
-
+ @Rule
+    public final ExpectedException exception = ExpectedException.none();
     @Test
     public void testAcheterMedicament() throws Exception {
         //initialisation
@@ -36,10 +39,10 @@ public class pharmacieTest {
         assert (pharma.getStock().get(0).getQuantite() == 70);
         assert (four.getProposition().get(0).getQuantite() == 30);
         //achat impossible, il doit lever une exception
-//        pharma.acheterMedicament(med, 200, four);
-//        assert qui vérifie la levée de l'exception
-//        assert (pharma.getStock().get(0).getQuantite() == 70);
-//        assert (four.getProposition().get(0).getQuantite() == 30);
+        exception.expect(Exception.class);   
+        pharma.acheterMedicament(med, 200, four);
+        assert (pharma.getStock().get(0).getQuantite() == 70);
+        assert (four.getProposition().get(0).getQuantite() == 30);
         //achat d'un deuxième médicament
         Medicament med2 = new Medicament( "Boura", "Alex", 200);
         quantite = 200;

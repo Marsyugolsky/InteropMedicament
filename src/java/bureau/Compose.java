@@ -15,7 +15,7 @@ public class Compose {
     Pharmacie pharmacie;
 
     public Compose(Medicament med, int quantite, Administration administration, Preparateur preparateur, Pharmacie pharmacie) throws Exception {
-        try {
+        
             this.med = med;
             for (Stock pharmastock : pharmacie.stock) {
                 if (pharmastock.getMed().equals(med)) {
@@ -31,9 +31,7 @@ public class Compose {
             this.administration = administration;
             this.preparateur = preparateur;
 
-        } catch (Exception e) {
-            System.out.println("quantité de médicament dans la pharmacie insufisant");
-        }
+        
     }
 
     public void setPharmacie(Pharmacie pharmacie) {

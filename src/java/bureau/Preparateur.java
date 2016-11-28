@@ -62,8 +62,8 @@ String prenom;
         this.prenom = prenom;
     }
 
-    public void creerPrescription() {
-        Prescription pres = new Prescription(new Date(), Avancement.prepare);
+    public void creerPrescription(Admission patient) {
+        Prescription pres = new Prescription(new Date(), Avancement.prepare,patient);
 
     }
 

@@ -296,12 +296,18 @@ public class Services {
      
          //////////////////// P R E S C R I P T I O N ////////////////////
     
-     public void newPrescription(Prescription pres) {
+//     public void newPrescription(Prescription pres) {
+//	em.getTransaction( ).begin( );
+//        em.persist(pres);
+//        em.getTransaction().commit();
+//    }
+     
+    public Prescription newPrescription(Prescription pres) {
 	em.getTransaction( ).begin( );
         em.persist(pres);
         em.getTransaction().commit();
+        return pres;
     }
-    
     public void removePrescription(int idPres) {
        
         Prescription pres = em.find( Prescription.class, idPres );
@@ -660,5 +666,5 @@ public class Services {
         List<Compose> comp = query.getResultList();
         return comp;
     }
-    
+//    
  }

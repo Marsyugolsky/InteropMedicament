@@ -14,6 +14,9 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -30,6 +33,7 @@ public class Fournisseur implements Serializable {
 
     @Column
     String nom;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     List<Propose> proposition;
 
     public Fournisseur( String nom) {

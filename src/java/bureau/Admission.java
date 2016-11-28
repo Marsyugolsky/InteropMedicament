@@ -28,7 +28,8 @@ public class Admission implements Serializable {
     
     @Column
     int IPP;
-    String nom;
+        @Column
+String nom;
 
     public Admission(int IEP, int IPP, String nom) {
         this.IEP = IEP;

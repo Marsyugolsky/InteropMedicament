@@ -30,7 +30,8 @@ public class Preparateur implements Serializable {
     @Column
 
     String nom;
-    String prenom;
+        @Column
+String prenom;
 
     public Preparateur(String nom, String prenom) {
         this.nom = nom;

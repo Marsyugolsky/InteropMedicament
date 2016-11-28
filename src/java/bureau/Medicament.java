@@ -31,9 +31,11 @@ public class Medicament implements Serializable {
     @Column
     private String nom;
     
-    private String molecule;
+        @Column
+private String molecule;
     
-    private int cout;
+        @Column
+private int cout;
 
     public Medicament(String nom, String molecule, int cout) {
         this.nom = nom;

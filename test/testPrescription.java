@@ -2,12 +2,15 @@
 import bureau.Administration;
 import bureau.Avancement;
 import bureau.Compose;
+import bureau.DatabaseUtils;
 import bureau.Fournisseur;
 import bureau.Medicament;
 import bureau.Pharmacie;
 import bureau.Preparateur;
 import bureau.Prescription;
+import bureau.Services;
 import java.util.Date;
+import java.util.List;
 import org.junit.Test;
 
 /*
@@ -49,5 +52,16 @@ public class testPrescription {
         
         
 
+    }
+     @Test
+    public void testpersistance() {
+        Services serv = new Services(DatabaseUtils.fact());
+    
+        Prescription pres;
+        pres = serv.newPrescription(new Prescription(new Date(), Avancement.prepare));
+       
+        assert (prescription.getId_pres()!= 0);
+        
+       
     }
 }

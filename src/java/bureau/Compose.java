@@ -13,6 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ *
+ * @author mgros
+ */
 @Entity
 @XmlRootElement
 public class Compose implements Serializable {
@@ -21,11 +25,25 @@ public class Compose implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
+    private Long id;
+    @Column
     Medicament med;
-    int quantite;
-    Administration administration;
-    Preparateur preparateur;
-    Pharmacie pharmacie;
+        @Column
+int quantite;
+        @Column
+Administration administration;
+        @Column
+Preparateur preparateur;
+        @Column
+Pharmacie pharmacie;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Compose(Medicament med, int quantite, Administration administration, Preparateur preparateur, Pharmacie pharmacie) {
 
@@ -76,6 +94,31 @@ public class Compose implements Serializable {
 
     public void setAdministration(Administration administration) {
         this.administration = administration;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Compose)) {
+            return false;
+        }
+        Compose other = (Compose) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "bureau.Compose[ id=" + id + " ]";
     }
 
 }

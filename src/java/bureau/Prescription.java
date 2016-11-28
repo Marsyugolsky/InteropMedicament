@@ -32,7 +32,7 @@ public class Prescription implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_pres;
   @Column
-    int IEP;
+    Admission patient;
     @Column
     Date date_press;
         @Column
@@ -52,9 +52,10 @@ int cout_total;
     }
 
 
-    public Prescription( Date date_press, Avancement avancement) {
+    public Prescription( Date date_press, Avancement avancement, Admission Patient) {
         this.date_press = date_press;
         this.avancement = avancement;
+        this.patient=patient;
         this.cout_total = 0;
 
         compose = new ArrayList<Compose>();

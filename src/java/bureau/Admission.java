@@ -17,21 +17,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author aboura
  */
-
 @Entity
 @XmlRootElement
 public class Admission implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int IEP;
-    
     @Column
     int IPP;
-        @Column
-String nom;
-        @Column
-String prenom;
+    @Column
+    String nom;
+    @Column
+    String prenom;
 
     public Admission(int IEP, int IPP, String nom, String prenom) {
         this.IEP = IEP;
@@ -63,11 +62,12 @@ String prenom;
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
+
     public void setPrenom(String nom) {
         this.prenom = prenom;
     }
-     public String getPrenom() {
-       return this.prenom;
+
+    public String getPrenom() {
+        return this.prenom;
     }
 }

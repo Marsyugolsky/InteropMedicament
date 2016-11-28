@@ -30,11 +30,14 @@ public class Admission implements Serializable {
     int IPP;
         @Column
 String nom;
+        @Column
+String prenom;
 
-    public Admission(int IEP, int IPP, String nom) {
+    public Admission(int IEP, int IPP, String nom, String prenom) {
         this.IEP = IEP;
         this.IPP = IPP;
         this.nom = nom;
+        this.prenom = prenom;
     }
 
     public int getIEP() {
@@ -61,6 +64,10 @@ String nom;
         this.nom = nom;
     }
     
-    
-    
+    public void setPrenom(String nom) {
+        this.prenom = prenom;
+    }
+     public String getPrenom() {
+       return this.prenom;
+    }
 }

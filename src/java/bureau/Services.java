@@ -367,6 +367,13 @@ public class Services {
         List<Prescription> res = query.getResultList();
         return res;
     }
+     public List<Prescription> getPrescriptionsByIEP(int IEP) {
+       
+      TypedQuery<Prescription> query = em.createQuery("SELECT p FROM Prescription p WHERE IEP ="+IEP, Prescription.class);
+        List<Prescription> res = query.getResultList();
+        return res;
+    }
+     
      
      //////////////////// P R E P A R A T E U R ////////////////////
      
@@ -612,8 +619,8 @@ public class Services {
         return res;
     }
      
-     public Admission newAdmission(int IEP, int IPP, String nom) {
-        Admission m = new Admission(IEP, IPP, nom);
+     public Admission newAdmission(int IEP, int IPP, String nom, String prenom) {
+        Admission m = new Admission(IEP, IPP, nom, prenom);
         m.setIEP(IEP);
         m.setIPP(IPP);
         m.setNom(nom);

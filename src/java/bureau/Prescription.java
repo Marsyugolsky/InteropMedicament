@@ -31,7 +31,8 @@ public class Prescription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_pres;
-
+  @Column
+    int IEP;
     @Column
     Date date_press;
         @Column

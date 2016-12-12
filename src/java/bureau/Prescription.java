@@ -23,24 +23,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author aboura
  */
-
 @Entity
 @XmlRootElement
 public class Prescription implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_pres;
-  @Column
+    @Column
     Admission patient;
     @Column
-    Date date_press;
-        @Column
-Avancement avancement;
-        @Column
-int cout_total;
+    String date_press;
     @Column
-@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    Avancement avancement;
+    @Column
+    int cout_total;
+    @Column
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     List<Compose> compose;
 
     public List<Compose> getCompose() {
@@ -51,11 +51,10 @@ int cout_total;
         this.compose = compose;
     }
 
-
-    public Prescription( Date date_press, Avancement avancement, Admission Patient) {
+    public Prescription(String date_press, Avancement avancement, Admission Patient) {
         this.date_press = date_press;
         this.avancement = avancement;
-        this.patient=patient;
+        this.patient = patient;
         this.cout_total = 0;
 
         compose = new ArrayList<Compose>();
@@ -66,7 +65,7 @@ int cout_total;
         return id_pres;
     }
 
-    public Date getDate_press() {
+    public String getDate_press() {
         return date_press;
     }
 
@@ -82,7 +81,7 @@ int cout_total;
         this.id_pres = id_pres;
     }
 
-    public void setDate_press(Date date_press) {
+    public void setDate_press(String date_press) {
         this.date_press = date_press;
     }
 
@@ -93,8 +92,8 @@ int cout_total;
     public void setCout_total(int cout_total) {
         this.cout_total = cout_total;
     }
-    
-    public void ajouterMedicamentPrescription (Compose comp) {
+
+    public void ajouterMedicamentPrescription(Compose comp) {
         compose.add(comp);
         setCout_total(this.coutTotal());
     }
@@ -106,6 +105,5 @@ int cout_total;
         }
         return res;
     }
-    
 
 }

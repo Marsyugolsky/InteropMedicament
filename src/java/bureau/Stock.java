@@ -24,11 +24,11 @@ public class Stock implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-        @Column
+    @Column
 
     Medicament med;
-        @Column
-int quantite;
+    @Column
+    int quantite;
 
     public Stock(Medicament med, int quantite) {
         this.med = med;
@@ -42,7 +42,6 @@ int quantite;
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public Medicament getMed() {
         return med;
@@ -59,7 +58,7 @@ int quantite;
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -84,5 +83,5 @@ int quantite;
     public String toString() {
         return "bureau.Stock[ id=" + id + " ]";
     }
-    
+
 }

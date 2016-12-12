@@ -26,7 +26,7 @@ import org.junit.Test;
  */
 public class testPrescription {
     Admission patient = new Admission(1,1,"bourra","alexandre");
-    Prescription prescription = new Prescription(new Date(), Avancement.prepare,patient);
+    Prescription prescription = new Prescription(new Date().toString(), Avancement.prepare,patient);
     Fournisseur four = new Fournisseur("Pierre Fabre");
         Medicament med = new Medicament( "nom", "molecule", 20);
         Pharmacie pharma = new Pharmacie( "pharma");
@@ -60,7 +60,7 @@ public class testPrescription {
         Services serv = new Services(DatabaseUtils.fact());
     
         Prescription pres;
-        pres = serv.newPrescription(new Prescription(new Date(), Avancement.prepare, new Admission(1,1,"gros","marceli")));
+        pres = serv.newPrescription(new Prescription(new Date().toString(), Avancement.prepare, new Admission(1,1,"gros","marceli")));
        
         assert (prescription.getId_pres()!= 0);
         

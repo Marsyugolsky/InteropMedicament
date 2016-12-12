@@ -63,7 +63,8 @@ String prenom;
     }
 
     public void creerPrescription(Admission patient) {
-        Prescription pres = new Prescription("12/12/2016", Avancement.prepare,patient);
+        String date = new Date().toString();
+        Prescription pres = new Prescription(date, Avancement.prepare,patient);
 
     }
 

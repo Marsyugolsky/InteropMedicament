@@ -115,5 +115,46 @@ public class RestServices {
         return Response.status(200).build();
     }
 
-   
+       @GET
+    @Path("medicament/{id}")
+    @Produces("application/json")
+    public Medicament getMedicament(@PathParam("id") int id) {
+        return serv.getMedicamentsById(id);
+    }
+    
+    @GET
+    @Path("medicament")
+    @Produces("application/json")
+    public List<Medicament> getAllMedicaments(@DefaultValue("") @QueryParam("type") String type ) {
+        if (type.equals("sansboites"))
+            return serv.getAllMedicamentsSansBoite();
+        else return serv.getAllMedicaments();
+    }
+
+    
+    
+    @POST
+    @Path("medicament")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public Medicament newMedicament(Medicament med) {
+        serv.newMedicament(med);
+        System.out.println("id:"+med.getId_med());
+        return med;
+    }
+    
+    @POST
+    @Path("medicaments/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editMedicament(Medicament med) {
+        serv.editMedicament(med);
+        return Response.status(200).entity(med).build();
+    }
+    
+    @DELETE
+    @Path("medicaments/{id}")
+    public Response removeMedicament(@PathParam("id") int id) {
+        serv.removeMedicament(id);
+        return Response.status(200).build();
+    }
 }

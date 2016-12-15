@@ -86,3 +86,37 @@ angular.module('monApp')
                 }
             }
         ])
+        /////////////Medicament////////////
+        .controller('MedicamentController', ['Medicament',
+            function (Medicament) {
+                this.medicament = Medicament.query();
+                this.delete = function (med) {
+                    // appel DELETE asynchrone au service web sur /crayons/{id}
+                    //cr.$delete();
+                    Medicament.delete(med);
+                    // remet à jour le tableau des crayons en suprimant l'élément effacé
+                    this.medicament.splice(this.medicament.indexOf(med), 1);
+                };
+            }
+        ])
+
+        .controller('MedicamentNewController', ['Medicament',
+            function (Medicament) {
+                this.cr = new Medicament();
+                this.update = function () {
+                    // appel POST asynchrone au service web sur /crayons
+                    this.cr.$save();
+                };
+            }])
+
+
+        .controller('MedicamentEditController', ['$routeParams', 'Medicament', '$location',
+            function ($routeParams, Medicament, $location) {
+                this.med = Medicament.get({id: $routeParams.id});
+                this.update = function () {
+                    // appel POST asynchrone au service web sur /crayons/{id} 
+                    this.med.$save();
+                    $location.path("/")
+                };
+            }
+        ])

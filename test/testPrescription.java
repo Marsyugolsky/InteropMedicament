@@ -59,8 +59,11 @@ public class testPrescription {
     public void testpersistance() {
         Services serv = new Services(DatabaseUtils.fact());
     
-        Prescription pres;
-        pres = serv.newPrescription(new Prescription(new Date().toString(), Avancement.prepare, new Admission(1,1,"gros","marceli")));
+        
+        
+        Admission patient = new Admission(1,1,"gros","marceli");
+        Prescription pres = new Prescription(new Date().toString(), Avancement.prepare, patient);
+        serv.newPrescription(pres);
        
         assert (prescription.getId_pres()!= 0);
         

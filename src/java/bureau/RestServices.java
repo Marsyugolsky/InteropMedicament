@@ -115,11 +115,17 @@ public class RestServices {
         return Response.status(200).build();
     }
 
-       @GET
+    @GET
     @Path("medicament/{id}")
     @Produces("application/json")
     public Medicament getMedicament(@PathParam("id") int id) {
         return serv.getMedicamentsById(id);
+    }
+    @GET
+    @Path("medicament/{nom}")
+    @Produces("application/json")
+    public List<Medicament> getMedicamentByName(@PathParam("nom") String nom) {
+        return serv.getMedicamentsByNomId(nom);
     }
     
     @GET

@@ -57,10 +57,7 @@ public class testPrescription {
     }
      @Test
     public void testpersistance() {
-        Services serv = new Services(DatabaseUtils.fact());
-    
-        
-        
+        Services serv = new Services(DatabaseUtils.fact());       
         Admission patient = new Admission(1,1,"gros","marceli");
         Prescription pres = new Prescription(new Date().toString(), Avancement.prepare, patient);
         serv.newPrescription(pres);

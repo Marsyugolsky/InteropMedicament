@@ -28,14 +28,14 @@ public class Compose implements Serializable {
     private Long id;
     @Column
     Medicament med;
-        @Column
-int quantite;
-        @Column
-Administration administration;
-        @Column
-Preparateur preparateur;
-        @Column
-Pharmacie pharmacie;
+    @Column
+    int quantite;
+    @Column
+    Administration administration;
+    @Column
+    Preparateur preparateur;
+    @Column
+    Pharmacie pharmacie;
 
     public Long getId() {
         return id;
